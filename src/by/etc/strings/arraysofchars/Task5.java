@@ -9,22 +9,24 @@ import java.util.Scanner;
 
 public class Task5 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
-    public static void deleteSpaces(String text) {
-        System.out.println("After: " + text);
+    public static String deleteSpaces(String text) {
         String newLine = text.replaceAll("\\s+", " ").trim();
-        System.out.println("Before: " + newLine);
+
+        return newLine;
     }
 
     public static void main(String[] args) {
-        deleteSpaces("   hel  lo wor    ld ");
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        System.out.println("After: " + text);
+
+        String newLine = deleteSpaces(text);
+        System.out.println("Before: " + newLine);
     }
 }

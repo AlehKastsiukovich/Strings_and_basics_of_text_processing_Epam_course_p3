@@ -9,28 +9,29 @@ import java.util.Scanner;
 
 public class Task5 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
-    public static void countOfA(String text) {
+    public static int countOfA(String text) {
         char[] chars = text.toCharArray();
         int count = 0;
 
         for (int i = 0; i < chars.length; i++) {
+
             if (chars[i] == 'a') {
                 count++;
             }
         }
-        System.out.println("Number of 'a' chars in text is " + count);
+
+        return count;
     }
 
     public static void main(String[] args) {
-        countOfA(readString());
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        int count = countOfA(text);
+        System.out.println("Number of 'a' chars in text is " + count);
     }
 }

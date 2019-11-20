@@ -9,21 +9,22 @@ import java.util.Scanner;
 
 public class Task6 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
+    public static String toDoubleChars(String text) {
+        String newLine = text.replaceAll(".", "$0$0");
 
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
-    public static void toDoubleChars(String text) {
-        String newLine = text.replaceAll(".","$0$0");
-        System.out.println("New string: " + newLine);
+        return newLine;
     }
 
     public static void main(String[] args) {
-        toDoubleChars(readString());
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        String newLine = toDoubleChars(text);
+
+        System.out.println("new line with double chars - " + newLine);
     }
 }

@@ -9,15 +9,6 @@ import java.util.Scanner;
 
 public class Task3 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
     public static String reverseText(String text) {
         return new StringBuilder(text).reverse().toString();
     }
@@ -25,16 +16,22 @@ public class Task3 {
     public static boolean isPalindrome(String text) {
         String revStr = reverseText(text);
 
-        if(text.matches(revStr)) {
-            System.out.println("is palindrome");
+        if (text.matches(revStr)) {
             return true;
         } else {
-            System.out.println("is not palindrome");
             return false;
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome(readString()));
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        boolean var = isPalindrome(text);
+        System.out.println(var);
     }
 }

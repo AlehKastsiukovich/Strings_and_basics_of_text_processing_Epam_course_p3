@@ -9,15 +9,6 @@ import java.util.Scanner;
 
 public class Task2 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
     public static void insertB(String text) {
         System.out.println("After: " + text);
         text = text.replaceAll("a", "ab");
@@ -25,6 +16,13 @@ public class Task2 {
     }
 
     public static void main(String[] args) {
-        insertB(readString());
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        insertB(text);
     }
 }

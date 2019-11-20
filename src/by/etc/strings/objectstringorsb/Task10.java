@@ -10,23 +10,23 @@ import java.util.Scanner;
 
 public class Task10 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
-    public static void numberOfSentences(String text) {
+    public static int numberOfSentences(String text) {
         String newText = text.replaceAll("[^(\\.|\\?|!)]","");
-        System.out.println(newText);
         int length = newText.length();
-        System.out.println("Number of sentences = " + length);
+
+        return length;
     }
 
     public static void main(String[] args) {
-        numberOfSentences("Hello.world!world?world,or not world.");
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        int len = numberOfSentences(text);
+
+        System.out.println("Number of sentences = " + len);
     }
 }

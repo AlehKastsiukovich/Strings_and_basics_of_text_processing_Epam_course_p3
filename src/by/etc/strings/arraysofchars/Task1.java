@@ -11,12 +11,18 @@ import java.util.Scanner;
 public class Task1 {
     private static String[] array;
 
-    public static void  initArray() {
+    public static void initArray() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter array size: ");
         while (true) {
+
+            while (!scanner.hasNextInt()) {
+                scanner.next();
+            }
+
             int n = scanner.nextInt();
+
             if (n > 0) {
                 array = new String[n];
                 break;
@@ -31,26 +37,26 @@ public class Task1 {
         System.out.println(Arrays.toString(array));
     }
 
-    public static void toSnakeCase() {
+    public static void convertToSnakeCase() {
         String regex = "([a-z])([A-Z]+)";
         String replacement = "$1_$2";
 
-        for(int i = 0; i < array.length; i++) {
-            array[i] = array[i].replaceAll(regex,replacement).toLowerCase();
-        }
-
-        System.out.println(Arrays.toString(array));
-    }
-
-    public static void toSnakeWithoutRegex() {
         for (int i = 0; i < array.length; i++) {
-            array[i] = replacement(array[i]);
+            array[i] = array[i].replaceAll(regex, replacement).toLowerCase();
         }
 
         System.out.println(Arrays.toString(array));
     }
 
-    public static String replacement(String s) {
+    public static void convertToSnakeCaseWoRegex() {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = replaceElements(array[i]);
+        }
+
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static String replaceElements(String s) {
         String p = s;
         for (int j = 0; j < s.length(); j++) {
             if (Character.isUpperCase(s.charAt(j))) {
@@ -63,6 +69,6 @@ public class Task1 {
 
     public static void main(String[] args) {
         initArray();
-        toSnakeWithoutRegex();
+        convertToSnakeCaseWoRegex();
     }
 }

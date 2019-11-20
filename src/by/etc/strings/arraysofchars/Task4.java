@@ -9,16 +9,8 @@ import java.util.Scanner;
 
 public class Task4 {
 
-    public static String readString() {
-        String text = null;
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter string: ");
-        text = scanner.next();
-        return text;
-    }
-
-    public static void amountOfNumberWoRegex(String text) {
+    public static int findAmountOfNumbersWoRegex(String text) {
         char[] ch = text.toCharArray();
         int count = 0;
 
@@ -34,21 +26,26 @@ public class Task4 {
                 }
             }
         }
-
-        System.out.println("count =  " + count);
+        return count;
     }
 
-    public static void amountOfNumbers(String text) {
-        String newLine = text.replaceAll("[a-zA-z]+","_");
-        String [] arrayOfNums = newLine.split("\\d+");
+    public static int findAmountOfNumbers(String text) {
+        String newLine = text.replaceAll("[a-zA-z]+", "_");
+        String[] arrayOfNums = newLine.split("\\d+");
 
         int count = arrayOfNums.length;
-        System.out.println("count = " + count);
+        return count;
     }
 
     public static void main(String[] args) {
-        //amountOfNumbers(readString());
-        amountOfNumberWoRegex(readString());
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(System.in);
+        String text;
+
+        System.out.println("Enter string: ");
+        text = scanner.nextLine();
+
+        System.out.println("count = " + findAmountOfNumbers(text));
     }
 }
 

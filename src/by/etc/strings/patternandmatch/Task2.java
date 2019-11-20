@@ -27,10 +27,9 @@ public class Task2 {
                     "<\\note>" +
                     "<\\notes>";
 
-    public static void analizator(String text) {
+    public static void analyzeXML(String text) {
         Pattern tagPattern = Pattern.compile("(<.[^(><.)]+>)|([А-Яа-я\\s]+)");
         Pattern context = Pattern.compile("[А-Яа-я]*");
-
         Matcher matcher = tagPattern.matcher(xmlText);
 
         while (matcher.find()) {
@@ -38,8 +37,10 @@ public class Task2 {
 
             if (test.matches("(<\\\\.*>)")) {
                 System.out.println(matcher.group() + " - closed tag");
+
             } else if (test.matches("<[^\\\\].*>")) {
                 System.out.println(matcher.group() + " - open tag");
+
             } else {
                 System.out.println(matcher.group() + " - tag context");
             }
@@ -47,7 +48,7 @@ public class Task2 {
     }
 
     public static void main(String[] args) {
-        analizator(xmlText);
+        analyzeXML(xmlText);
     }
 }
 
